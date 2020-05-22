@@ -2505,7 +2505,7 @@ Tigr *tigrWindow(int w, int h, const char *title, int flags)
 	scale = tigrEnforceScale(scale, flags);
 
 	// Get the final window size.
-	dwStyle = WS_OVERLAPPEDWINDOW;
+	dwStyle = (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX);
 	rc.left = 0; rc.top = 0; rc.right = w*scale; rc.bottom = h*scale;
 	AdjustWindowRect(&rc, dwStyle, FALSE);
 
