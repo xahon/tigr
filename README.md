@@ -47,3 +47,34 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```
+
+Or using c++ wrapper
+
+```
+#include "tigr-cpp.h"
+
+int main(int argc, char* argv[]) {
+    auto t = std::make_shared<tigr::Window>(200, 200, "Example", (int)tigr::WindowFlag::AUTO);
+    auto image = std::make_shared<tigr::Bitmap>(200, 200);
+
+    while (!t->isClosed()) {
+        t->clear(0, 0, 0);
+
+        for (int y = 0; y < 200; ++y) {
+            for (int x = 0; x < 200; ++x) {
+                if ((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))
+                    image->setPixel(x, y, tigr::RGBA{ 255, 255, 255 });
+                else
+                    image->setPixel(x, y, tigr::RGBA{ 0, 0, 0 });
+            }
+        }
+
+        t->blitTint(image, tigr::RGBA{ 255, 0, 0 });
+        t->blitTint(image, 10, 10, 0, 0, 180, 180, tigr::RGBA{ 0, 0, 255 });
+        t->blitTint(image, 20, 20, 0, 0, 160, 160, tigr::RGBA{ 0, 255, 0 });
+        t->print(0, 0, tigr::RGBA{ 255, 255, 255 }, "Hello world");
+        t->update();
+    }
+    return 0;
+}
+```
