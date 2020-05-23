@@ -29,8 +29,6 @@ To use it, you just drop them right into your project. No fancy build systems, n
 
 ### How do I program with TIGR? ###
 
-See the [TIGR website](https://bitbucket.org/rmitton/tigr/overview) for tutorials, documentation, bug reporting, the whole shebang.
-
 Here's an example Hello World program. For more information, just read ** tigr.h ** to see the APIs available.
 
 ```
